@@ -1,0 +1,83 @@
+Universidad Nacional del Sur  
+Lenguajes de Programación
+
+Licenciatura en Ciencias de la Computación  
+1er Cuatrimestre 2026
+
+Proyecto de Promoción
+Etapa 2
+
+Emoji de tilde verde: ✅ (copiar y pegar para usar)
+
+# Descripción General
+
+El objetivo general del proyecto es analizar de qué manera las decisiones que se toman en el diseño de un
+lenguaje de programación impactan en el desarrollo de un sistema de complejidad media.
+Para ello, deberán desarrollar un sistema que, dado un tema de interés (por ejemplo, Energías Renovables),
+recopile y procese automáticamente información proveniente de múltiples fuentes documentales y produzca un
+resumen que integre distintas perspectivas sobre dicho tema. Como primer paso, en la Etapa 1 eligieron un
+lenguaje de programación (Rust o Scala) para desarrollar este sistema y comenzaron a analizar el lenguaje en
+función de los conceptos vistos en la materia.
+
+# Requisitos de la Etapa
+
+Los requisitos de la etapa se dividen en dos partes:
+
+## Requisitos de Análisis
+
+1. ✅ Analizar el lenguaje seleccionado en función de los conceptos vistos en la materia hasta el momento de la entrega. El análisis debe incluir (pero no necesariamente estar limitado a) los siguientes aspectos:
+
+   - ✅ Incorporación de unidades, pasaje de parámetros.
+   - ✅ Mecanismos de concurrencia.
+   - ✅ Constructores de estilo funcional.
+   - ✅ Relación con el paradigma Orientado a Objetos.
+   - ✅❓ Sistema de tipos, con especial atención en la forma en que el lenguaje realiza los chequeos de tipos.
+   
+   
+   
+
+2. ✅ En lo referido a incorporación de unidades, realizar una comparación frente a otro lenguaje que resulte apropiado. Es importante que esta comparación se lleve a cabo de manera adecuada, apelando a los criterios de evaluación vistos en la materia. Importante: no es necesario emplear todos los criterios de evaluación, seleccione aquellos criterios que permitan realizar un análisis significativo, evitando comparaciones superficiales o meramente descriptivas.
+
+3. ✅ En lo referido al sistema de tipos, analizar el lenguaje en términos de dureza. Compare el lenguaje frente a otro (u otros) que considere adecuado.
+
+4. ❓ Desarrollar un documento donde se detalle el análisis realizado, incluyendo ejemplos ilustrativos.
+
+## Requisitos de Implementación
+
+1. ☐ Implementar una aplicación de consola que lea todos los archivos de texto (.txt) de un directorio y produzca un resumen extractivo del contenido. Los archivos de texto tendrán el estilo de un documento de Wikipedia, y puede descargarlos en el siguiente enlace. La lógica de procesamiento debe estar separada de la entrada/salida.
+
+2. ☐ El resumen se construye mediante un algoritmo basado en TF-IDF (Term Frequency - Inverse Document Frequency). De manera breve, el algoritmo funciona como sigue:
+
+   - ☐ Se reúnen todos los documentos y se segmenta el texto en oraciones.
+   - ☐ Cada oración se tokeniza: se convierte a minúsculas, se elimina la puntuación y se descartan stopwords.
+   - ☐ Se calcula el valor IDF de cada token t sobre el conjunto de oraciones: IDF (t) = log(N/(1 + df (t))), donde N es el total de oraciones y df (t) es la cantidad de oraciones que contienen al token t.
+   - ☐ Cada oración s recibe un puntaje igual a la suma de TF(t, s) × IDF (t) de sus tokens, donde TF (t, s) es la frecuencia relativa del token t en esa oración (es decir, la cantidad de veces que t aparece en s dividido por el total de tokens en s).
+   - ☐ Se seleccionan las oraciones de mayor puntaje (considerar un máximo de 10 oraciones).
+
+3. ☐ El resultado deberá mostrarse al usuario en la consola.
+
+4. ☐ Código de Honor: Se espera que cada comisión resuelva el trabajo de manera autónoma. Las partes o ideas tomadas de otras fuentes no deben constituir partes esenciales de la tarea y deben estar claramente identificadas. En el caso de herramientas basadas en Inteligencia Artificial (como ChatGPT, Gemini, Claude, o similares), rigen las mismas condiciones mencionadas y, además, se deben incluir los prompts utilizados como parte de la entrega.
+
+## Pautas de Trabajo y de Entrega
+
+1. ☐ En esta segunda etapa, la entrega consistirá de un informe (en formato .pdf) con las respuestas a las consignas de análisis y explicación, junto con el código para los requisitos de implementación (ver Sección 2). El informe debe tener adecuadamente identificados a los integrantes de la comisión. El informe no debe exceder las 5 páginas (utilizando tamaño de márgenes y fuente razonables), sin contar referencias y prompts utilizados (ver Sección 4).
+
+2. ☐ La resolución deberá ser enviada por Moodle.
+
+3. ☐ Fecha límite de entrega: 28 de mayo de 2026, 20:00hs.
+
+## Uso de Herramientas de IA
+
+1. ☐ El uso de herramientas basadas en inteligencia artificial (como ChatGPT, Gemini, Claude, o similares) está permitido en esta etapa de manera acotada y reflexiva, al igual que en la Etapa 1. El criterio central es el siguiente: no utilizar IA de forma que resuelva directamente la consigna de una etapa y, con ello, perjudique el aprendizaje buscado. Esto incluye, por ejemplo, pedir a la herramienta que analice un fragmento de código y explique qué concepto ilustra, o pedirle que redacte las respuestas del informe.
+
+2. [ ] En cambio, sí se permite, y se alienta, el uso de tales herramientas para:
+
+   - ☐ Obtener ejemplos de código que ilustren características del lenguaje elegido, o que ayuden a ilustrar las comparaciones entre lenguajes.
+   - ☐ Solicitar descripciones o explicaciones del lenguaje elegido que faciliten la comprensión, siempre que no constituyan una respuesta directa a la consigna.
+   - ☐ Obtener retroalimentación sobre el propio desarrollo: por ejemplo, consultar si una implementación es idiomática, o si una explicación está bien expresada o puede mejorarse.
+   - ☐ En el caso del requisito de implementación, se alienta fuertemente a que utilicen herramientas de IA para el desarrollo (aunque no es obligatorio). Sin embargo, es importante que sean críticos con el código obtenido a partir de estas herramientas, y que en todo momento evalúen si dicho código se alinea con lo que han aprendido y con las convenciones de programación del lenguaje.
+   - ☐ Al igual que en la Etapa 1, todo uso de IA debe quedar registrado en el informe mediante los prompts utilizados, en el orden en que fueron utilizados.
+
+## Desaprobación y Re-entrega
+
+1. ☐ En caso de no alcanzar los objetivos mínimos de esta etapa, la misma se considerará desaprobada. Se deberán incorporar las correcciones y mejoras correspondientes, las cuales deberán ser entregadas junto con la Etapa 3.
