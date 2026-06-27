@@ -1,0 +1,25 @@
+# Scala CLI
+.scala-build/
+.bsp/
+
+# sbt
+target/
+project/target/
+project/project/
+
+# Bloop / Metals (IDE)
+.bloop/
+.metals/
+.ammonite/
+
+# Compilados JVM
+*.class
+*.tasty
+
+# IDEs
+.idea/
+.vscode/
+
+# Sistema operativo
+.DS_Store
+Thumbs.db
