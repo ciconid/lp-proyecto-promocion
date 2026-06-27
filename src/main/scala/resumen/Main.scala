@@ -1,17 +1,32 @@
 package resumen
 
-import resumen.core.Resumidor
-import resumen.io.{LectorDocumentos, SalidaConsola}
+import resumen.core.{Entidades, FiltroTema, Resumidor}
+import resumen.io.{
+  ClienteWikipedia,
+  DetectorEntidades,
+  EntradaConsola,
+  LectorDocumentos,
+  SalidaConsola
+}
+import resumen.modelo.Reporte
 
 object Main {
 
   def main(args: Array[String]): Unit = {
     val ruta = args.headOption.getOrElse("archivos")
-    val documentos = LectorDocumentos.leerDirectorio(ruta)
+    val tema = EntradaConsola.leerTema()
 
-    if (documentos.isEmpty)
-      println(s"No se encontraron archivos .txt en el directorio: $ruta")
-    else
-      SalidaConsola.mostrarResumen(Resumidor.resumir(documentos))
+    val documentos = LectorDocumentos.leerDirectorio(ruta)
+    val relevantes = FiltroTema.documentosRelevantes(tema, documentos)
+
+    if (relevantes.isEmpty)
+      SalidaConsola.sinDocumentos(tema)
+    else {
+      val resumen = Resumidor.resumir(relevantes)
+      val entidades = Entidades.normalizar(DetectorEntidades.detectar(relevantes))
+      val informacion =
+        Entidades.personasYOrganizaciones(entidades).flatMap(ClienteWikipedia.describir)
+      SalidaConsola.mostrarReporte(Reporte(tema, resumen, entidades, informacion))
+    }
   }
 }
