@@ -26,10 +26,17 @@ object Tokenizador {
       .filter(_.nonEmpty)
       .toList
 
+  private val acentos: Map[Char, Char] = Map(
+    'á' -> 'a', 'é' -> 'e', 'í' -> 'i', 'ó' -> 'o', 'ú' -> 'u', 'ü' -> 'u'
+  )
+
+  private def sinAcentos(texto: String): String =
+    texto.map(c => acentos.getOrElse(c, c))
+
   def tokenizar(texto: String): List[String] =
-    texto.toLowerCase
-      .replaceAll("[^\\p{L}\\p{Nd}\\s]", " ")
-      .split("\\s+")
+    sinAcentos(
+      texto.toLowerCase.replaceAll("[^\\p{L}\\p{Nd}\\s]", " ")
+    ).split("\\s+")
       .filter(_.nonEmpty)
       .filterNot(stopwords.contains)
       .toList
